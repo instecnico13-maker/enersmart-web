@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A1B3D"/><stop offset="1" stop-color="#0052CC"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#g)"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1"><path d="M0 100h800M0 200h800M0 300h800M0 400h800M0 500h800M100 0v600M200 0v600M300 0v600M400 0v600M500 0v600M600 0v600M700 0v600"/></g>
+  <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 250h560l-40-90H160z"/><path d="M160 160 140 250M240 160l-10 90M320 160l-5 90M400 160v90M480 160l5 90M560 160l10 90M640 160l20 90" stroke-opacity=".6"/>
+    <path d="M150 250v230h500V250"/><path d="M215 480V330h120v150M215 330h120"/><path d="M400 330h185v90H400z"/>
+    <path d="M440 450h110" stroke-opacity=".6"/>
+  </g>
+  <path d="M545 340 515 385h22l-6 32 34-48h-22z" fill="#D4AF37"/>
+  <g fill="none" stroke="#D4AF37" stroke-width="3" stroke-linecap="round"><path d="M290 300c-10-14 10-22 0-36M310 300c-10-14 10-22 0-36"/></g>
+</svg>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ENERSMART | Diagnóstico energético para cafeterías de Bogotá</title>
+  <meta name="description" content="ENERSMART calcula cuánta energía gasta tu cafetería, revisa tu iluminación y te entrega un informe con consejos para ahorrar. Gratis, desde el celular.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Iconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M3.5 6l1.5 1.5 2.5-3M3.5 12l1.5 1.5 2.5-3M3.5 18l1.5 1.5 2.5-3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6zM14 2v5h5M9 13h7M9 17h7"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M7 2h10v20H7zM11 18h2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 6l9 7 9-7"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4z"/></symbol>
+    <symbol id="i-ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  </defs>
+</svg>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera" id="inicio">
+  <div class="contenedor cabecera__fila">
+    <a href="#inicio" class="logo" aria-label="ENERSMART, ir al inicio"><img src="images/logo.png" alt="ENERSMART" width="auto" height="56px"></a>
+    <button class="menu-boton" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#servicios">Qué hace</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#ejemplo">Un ejemplo</a>
+      <a href="#planes">Planes</a>
+      <a href="#respaldo">Respaldo técnico</a>
+      <a href="#nosotros">Quiénes somos</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="boton boton--chico" data-app-link href="#">Abrir la app</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- PORTADA -->
+<section class="portada">
+  <div class="contenedor portada__rejilla">
+    <div class="portada__texto">
+      <p class="sobretitulo">Eficiencia energética para cafeterías de Bogotá</p>
+      <h1>Entiende en qué se va tu factura de energía y empieza a pagar menos</h1>
+      <p class="portada__bajada">Escribes los equipos de tu local y ENERSMART calcula cuánto gastan, revisa si tu iluminación es suficiente y te entrega un informe con consejos claros. Sin visitas técnicas, sin instalar nada y gratis.</p>
+      <div class="acciones">
+        <a class="boton" data-app-link href="#">Probar la app gratis</a>
+        <a class="boton boton--borde" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+      <ul class="portada__datos">
+        <li>Funciona desde el celular o el computador</li>
+        <li>No guarda tus datos</li>
+        <li>Basada en el RETILAP y datos de la UPME</li>
+      </ul>
+    </div>
+
+    <div class="portada__visual">
+      <div class="foto foto--hero" role="img" aria-label="Cafetería con iluminación cálida"></div>
+      <form class="prueba" id="prueba" aria-labelledby="prueba-titulo" onsubmit="return false">
+        <h2 id="prueba-titulo">Prueba con tu nevera</h2>
+        <p class="prueba__nota">Mira cuánto gasta al mes. Es el mismo cálculo que hace la app.</p>
+        <div class="prueba__campos">
+          <label>Potencia (vatios)
+            <input type="number" id="pw" value="150" min="0" max="20000" step="10" inputmode="numeric">
+          </label>
+          <label>Horas encendida al día
+            <input type="number" id="ph" value="24" min="0" max="24" step="1" inputmode="numeric">
+          </label>
+          <label>Precio del kWh ($)
+            <input type="number" id="pp" value="850" min="0" step="10" inputmode="numeric">
+          </label>
+        </div>
+        <dl class="prueba__resultado" aria-live="polite">
+          <div><dt>Energía al mes</dt><dd><span id="r-kwh">108</span> kWh</dd></div>
+          <div><dt>Te cuesta al mes</dt><dd id="r-mes">$91.800</dd></div>
+          <div><dt>Te cuesta al año</dt><dd id="r-anio">$1.101.600</dd></div>
+        </dl>
+        <p class="prueba__pie">Dónde está tu precio: en tu factura, como «costo unitario» o «valor kWh».</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- EL PROBLEMA -->
+<section class="seccion seccion--clara" id="problema">
+  <div class="contenedor dos-col">
+    <div>
+      <h2>Pagas la energía cada mes sin saber qué la gasta</h2>
+    </div>
+    <div class="texto-largo">
+      <p>Una auditoría energética profesional responde justo esa pregunta, pero está pensada para la industria: toma varios días, necesita visitas técnicas y cuesta más de lo que un negocio con dos o tres empleados puede pagar.</p>
+      <p>ENERSMART lleva ese análisis a las cafeterías pequeñas. Tú ingresas datos que ya conoces y recibes en minutos un diagnóstico con cifras, comparado con la norma colombiana, y consejos concretos para ahorrar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ HACE -->
+<section class="seccion" id="servicios">
+  <div class="contenedor">
+    <div class="seccion__cabeza">
+      <h2>Tres revisiones en una sola herramienta</h2>
+      <p>Usa las que necesites. Al final, todo se junta en un solo informe.</p>
+    </div>
+
+    <article class="servicio">
+      <div class="servicio__icono"><svg class="ico"><use href="#i-bolt"/></svg></div>
+      <div class="servicio__texto">
+        <h3>Diagnóstico energético</h3>
+        <p>Calcula cuánta energía gasta cada equipo (nevera, cafetera, aire o ventilador, iluminación) y cuánto representa en tu factura. Compara tu refrigeración con el 48 % que la UPME considera normal en el comercio y te dice qué equipo pesa más.</p>
+      </div>
+      <ul class="servicio__lista">
+        <li>Consumo y costo por equipo</li>
+        <li>Ahorro posible estimado</li>
+        <li>Consejo con inteligencia artificial</li>
+      </ul>
+    </article>
+
+    <article class="servicio">
+      <div class="servicio__icono"><svg class="ico"><use href="#i-bulb"/></svg></div>
+      <div class="servicio__texto">
+        <h3>Revisión de la iluminación</h3>
+        <p>Con el tamaño de tu local y tus bombillos calcula cuánta luz llega a las mesas y la compara con los 300 lux que pide el RETILAP para atención al cliente. Te avisa si estás corto de luz o si la estás desperdiciando.</p>
+      </div>
+      <ul class="servicio__lista">
+        <li>Lista de bombillos con datos típicos</li>
+        <li>Eficacia en lúmenes por vatio</li>
+        <li>Aviso de luz baja o de sobra</li>
+      </ul>
+    </article>
+
+    <article class="servicio">
+      <div class="servicio__icono"><svg class="ico"><use href="#i-check"/></svg></div>
+      <div class="servicio__texto">
+        <h3>Autoevaluación de hábitos</h3>
+        <p>Ocho preguntas de sí o no sobre cómo manejas la energía en tu día a día. Obtienes un puntaje y un semáforo, y para cada «no» recibes un consejo que puedes aplicar esta semana.</p>
+      </div>
+      <ul class="servicio__lista">
+        <li>Puntaje de 0 a 8</li>
+        <li>Semáforo verde, amarillo o rojo</li>
+        <li>Consejos para lo que falta</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="seccion seccion--oscura" id="como-funciona">
+  <div class="contenedor">
+    <div class="seccion__cabeza">
+      <h2>Cómo funciona</h2>
+      <p>De la factura al informe en unos 10 minutos.</p>
+    </div>
+    <ol class="pasos">
+      <li>
+        <span class="pasos__n">1</span>
+        <h3>Abre la app</h3>
+        <p>Desde el celular o el computador. No hay que descargar nada ni crear cuenta. Escribe el nombre de tu local.</p>
+      </li>
+      <li>
+        <span class="pasos__n">2</span>
+        <h3>Cuéntale tus equipos</h3>
+        <p>Vatios y horas de uso de cada equipo, el tamaño del local y tus respuestas a las ocho preguntas.</p>
+      </li>
+      <li>
+        <span class="pasos__n">3</span>
+        <h3>Lee tus resultados</h3>
+        <p>Ves al instante cuánto gastas, si tu luz es suficiente y tu puntaje de hábitos.</p>
+      </li>
+      <li>
+        <span class="pasos__n">4</span>
+        <h3>Descarga tu informe</h3>
+        <p>Un PDF con el nombre de tu negocio, listo para guardar, imprimir o compartir con tu equipo.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- EJEMPLO -->
+<section class="seccion" id="ejemplo">
+  <div class="contenedor dos-col dos-col--centro">
+    <div class="texto-largo">
+      <h2>Un ejemplo: una cafetería que gasta de más en frío</h2>
+      <p>Imagina una cafetería con una nevera de 150 W encendida todo el día y un aire acondicionado de 800 W que trabaja 6 horas. Entre los dos suman 252 kWh al mes, y el local gasta 350 kWh en total.</p>
+      <p>La refrigeración se lleva el <strong>72 %</strong> de la energía, cuando la referencia de la UPME para el comercio es de <strong>48 %</strong>. Con un kWh a $850, solo en frío se van unos $214.200 al mes.</p>
+      <p>Revisando empaques de la nevera, ubicándola lejos del calor y dándole mantenimiento, una reducción prudente del 15 % ahorraría unos <strong>$385.560 al año</strong>, sin comprar equipos nuevos.</p>
+      <p class="aviso">Es un caso simulado con las fórmulas de la app. El ahorro es un supuesto que se debe validar con datos reales de cada negocio.</p>
+    </div>
+    <figure class="grafico" aria-label="Comparación entre la refrigeración de la cafetería del ejemplo y la referencia de la UPME">
+      <div class="barra">
+        <div class="barra__etiqueta"><span>Refrigeración de la cafetería</span><strong>72 %</strong></div>
+        <div class="barra__pista"><div class="barra__valor barra__valor--azul" style="width:72%"></div></div>
+      </div>
+      <div class="barra">
+        <div class="barra__etiqueta"><span>Referencia UPME para el comercio</span><strong>48 %</strong></div>
+        <div class="barra__pista"><div class="barra__valor barra__valor--oro" style="width:48%"></div></div>
+      </div>
+      <figcaption>Participación de la refrigeración en el consumo total de energía. Caso simulado.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- INFORME E IA -->
+<section class="seccion seccion--clara" id="informe">
+  <div class="contenedor dos-col dos-col--centro">
+    <div class="hoja" aria-hidden="true">
+      <div class="hoja__cabecera"><b>ENERSMART</b><span>Informe de diagnóstico energético digital</span></div>
+      <div class="hoja__cuerpo">
+        <div class="hoja__titulo">Tu cafetería</div>
+        <div class="hoja__linea" style="width:46%"></div>
+        <div class="hoja__tabla">
+          <i></i><i></i><i></i><i></i>
+        </div>
+        <div class="hoja__barras">
+          <span style="width:88%"></span><span style="width:62%"></span><span style="width:35%"></span><span style="width:20%"></span>
+        </div>
+        <div class="hoja__linea" style="width:92%"></div>
+        <div class="hoja__linea" style="width:78%"></div>
+        <div class="hoja__linea" style="width:84%"></div>
+      </div>
+    </div>
+    <div class="texto-largo">
+      <h2>Un informe que puedes guardar, imprimir o compartir</h2>
+      <p>Cuando terminas, ENERSMART arma un PDF con el nombre de tu negocio, la fecha, tus tablas, un gráfico de consumo por equipo y los consejos para mejorar.</p>
+      <ul class="ticks">
+        <li><svg class="ico ico--tick"><use href="#i-ok"/></svg>Consejo corto escrito con inteligencia artificial, pensado para tu tipo de negocio</li>
+        <li><svg class="ico ico--tick"><use href="#i-ok"/></svg>A la IA solo se envían cifras y el nombre del equipo que más gasta, nunca el nombre de tu negocio</li>
+        <li><svg class="ico ico--tick"><use href="#i-ok"/></svg>Cada consejo se marca como generado con IA para que lo revises antes de aplicarlo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="seccion" id="planes">
+  <div class="contenedor">
+    <div class="seccion__cabeza">
+      <h2>Empieza gratis. Si quieres seguimiento, hay suscripción</h2>
+    </div>
+    <div class="planes">
+      <div class="plan">
+        <h3>Versión gratuita</h3>
+        <p class="plan__estado">Disponible hoy</p>
+        <ul>
+          <li>Diagnóstico, iluminación y autoevaluación</li>
+          <li>Informe en PDF con el nombre de tu negocio</li>
+          <li>Hasta 3 consejos con IA por visita</li>
+          <li>Sin cuenta ni instalación</li>
+        </ul>
+        <a class="boton" data-app-link href="#">Abrir la app</a>
+      </div>
+      <div class="plan plan--destacado">
+        <h3>Suscripción trimestral</h3>
+        <p class="plan__estado">Próximamente</p>
+        <ul>
+          <li>Todo lo de la versión gratuita</li>
+          <li>Seguimiento cada tres meses</li>
+          <li>Comparación de tu consumo entre trimestres</li>
+          <li>Historial de informes y acompañamiento</li>
+        </ul>
+        <a class="boton boton--borde-claro" href="#contacto">Quiero que me avisen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESPALDO -->
+<section class="seccion seccion--clara" id="respaldo">
+  <div class="contenedor">
+    <div class="seccion__cabeza">
+      <h2>Los cálculos tienen respaldo técnico</h2>
+      <p>No inventamos las referencias: salen de fuentes oficiales colombianas.</p>
+    </div>
+    <div class="respaldo">
+      <div>
+        <h3>RETILAP</h3>
+        <p>El Reglamento Técnico de Iluminación y Alumbrado Público (Resolución 180540 de 2010) fija los niveles de luz. Usamos su método de cálculo y el valor de 300 lux para atención al cliente.</p>
+      </div>
+      <div>
+        <h3>UPME y Universidad Nacional</h3>
+        <p>Sus estudios del consumo de energía en el comercio establecen que la refrigeración debería representar hasta 48 % del total. Es nuestro punto de comparación.</p>
+      </div>
+      <div>
+        <h3>Tus datos, protegidos</h3>
+        <p>La app está pensada para no guardar la información que escribes: se usa durante tu visita y se borra al cerrarla o al presionar «Empezar de cero».</p>
+      </div>
+    </div>
+    <p class="aviso aviso--centro">ENERSMART entrega estimaciones orientativas. No reemplaza una auditoría profesional, no certifica cumplimiento normativo ni garantiza un ahorro.</p>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="seccion" id="nosotros">
+  <div class="contenedor dos-col dos-col--centro">
+    <div class="foto foto--nosotros" role="img" aria-label="Equipo revisando consumo de energía"></div>
+    <div class="texto-largo">
+      <h2>Un proyecto hecho en Bogotá, para negocios de Bogotá</h2>
+      <p>ENERSMART nació como proyecto productivo de la Tecnología en Gestión Eficiente de la Energía, desarrollado en el marco de la formación en el SENA.</p>
+      <p>La idea es sencilla: que cualquier dueño de cafetería pueda entender su consumo de energía sin pagar una consultoría. Hoy la herramienta está en etapa de validación con negocios reales, y cada comentario nos ayuda a mejorarla.</p>
+      <a class="boton boton--borde" href="#contacto">Cuéntanos tu experiencia</a>
+    </div>
+  </div>
+</section>
+
+<!-- PREGUNTAS -->
+<section class="seccion seccion--clara" id="preguntas">
+  <div class="contenedor contenedor--angosto">
+    <div class="seccion__cabeza">
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <details>
+      <summary>¿Cuesta algo usar ENERSMART?</summary>
+      <p>No. La versión actual es gratuita. Más adelante habrá una suscripción opcional para quienes quieran seguimiento trimestral.</p>
+    </details>
+    <details>
+      <summary>¿Qué datos necesito tener a la mano?</summary>
+      <p>Tu factura de energía (para el precio del kWh), la placa de tus equipos (donde dice los vatios), las horas que usas cada uno, el tamaño del local y los bombillos que tienes.</p>
+    </details>
+    <details>
+      <summary>¿Qué pasa si no sé algún dato?</summary>
+      <p>Escribe tu mejor aproximación. El resultado sirve para darte una idea clara, no necesita ser perfecto. Si no usas un equipo, puedes marcarlo y no se cuenta.</p>
+    </details>
+    <details>
+      <summary>¿Guardan lo que escribo?</summary>
+      <p>No. La información se usa mientras tienes la app abierta y se borra al cerrarla. A la inteligencia artificial solo se envían números y el nombre del equipo que más consume, nunca el nombre de tu negocio.</p>
+    </details>
+    <details>
+      <summary>¿Puedo confiar en el consejo de la inteligencia artificial?</summary>
+      <p>Es una ayuda, no una orden. Siempre se marca como generado con IA y conviene que lo revises. Si el consejo implica tocar instalaciones eléctricas, llama a un técnico electricista certificado.</p>
+    </details>
+    <details>
+      <summary>¿Reemplaza una auditoría energética profesional?</summary>
+      <p>No. Te da un primer diagnóstico rápido con tus propios datos. No incluye mediciones en el local ni certificaciones.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="seccion seccion--oscura" id="contacto">
+  <div class="contenedor dos-col">
+    <div class="texto-largo">
+      <h2>Hablemos de tu cafetería</h2>
+      <p>Escríbenos para resolver dudas, contarnos cómo te fue con la app o pedir que te avisemos cuando abra la suscripción.</p>
+      <ul class="contacto__datos">
+        <li><svg class="ico"><use href="#i-mail"/></svg><span id="dato-correo">contacto@tudominio.com</span></li>
+        <li><svg class="ico"><use href="#i-pin"/></svg><span id="dato-ciudad">Bogotá, Colombia</span></li>
+        <li id="fila-wa" hidden><svg class="ico"><use href="#i-chat"/></svg><a id="dato-wa" href="#">Escríbenos por WhatsApp</a></li>
+      </ul>
+    </div>
+    <form class="formulario" id="formulario" novalidate>
+      <label>Tu nombre
+        <input type="text" name="nombre" autocomplete="name" required>
+      </label>
+       <label>Tu correo
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <input type="hidden" name="_subject" value="Mensaje desde la página de ENERSMART">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+      <label>Nombre de tu cafetería
+        <input type="text" name="negocio" autocomplete="organization">
+      </label>
+      <label>Tu mensaje
+        <textarea name="mensaje" rows="4" required></textarea>
+      </label>
+      <button class="boton boton--oro" type="submit">Enviar mensaje</button>
+      <p class="formulario__estado" id="estado" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie__fila">
+    <a href="#inicio" class="logo"><img src="images/logo.png" alt="ENERSMART" width="150" height="33"></a>
+    <p>Diagnóstico energético digital para pequeños negocios de alimentos y bebidas.</p>
+    <p class="pie__legal">© <span id="anio">2026</span> ENERSMART. Angela Benitez. Proyecto, Tecnología en Gestión Eficiente de la Energía. Las estimaciones son orientativas.</p>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
